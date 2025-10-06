@@ -35,4 +35,4 @@ Sistem monitoring limbah medis berbasis ESP32, Firebase, dan sensor jarak (VL53L
 ## Catatan
 - Pastikan sudah menginstal library yang diperlukan: WiFi, Wire, Adafruit_VL53L0X, NewPing, Firebase_ESP_Client.
 - Update `ssid`, `password`, `DATABASE_URL`, dan `DATABASE_SECRET` sesuai konfigurasi masing-masing.
-- **Gunakan board ESP32 dengan versi terbaru pada Arduino IDE untuk kompatibilitas maksimal.**
+- **Gunakan board ESP32 dan library firebase dengan versi terbaru pada Arduino IDE untuk kompatibilitas maksimal.**
