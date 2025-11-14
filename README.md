@@ -32,6 +32,8 @@ Sistem monitoring limbah medis berbasis ESP32, Firebase, dan sensor jarak (VL53L
 3. Data status dikirim ke Firebase setiap 3 detik.
 4. Data dapat diakses melalui Firebase untuk aplikasi pemantauan.
 
+Note: This have HAKI in Indonesia
+
 ## Catatan
 - Pastikan sudah menginstal library yang diperlukan: WiFi, Wire, Adafruit_VL53L0X, NewPing, Firebase_ESP_Client.
 - Update `ssid`, `password`, `DATABASE_URL`, dan `DATABASE_SECRET` sesuai konfigurasi masing-masing.
