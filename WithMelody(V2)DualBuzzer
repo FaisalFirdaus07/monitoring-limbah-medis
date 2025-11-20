@@ -7,12 +7,12 @@
 #include "pitches.h"
 #include "driver/ledc.h"  // API LEDC untuk core 3.x
 
-// ======= USER CONFIG =======
-const char* ssid     = "UGMURO-IoT";
-const char* password = "Esteh5000";
 
-#define DATABASE_URL "https://limbah-medis-2-default-rtdb.firebaseio.com/"
-#define DATABASE_SECRET "BUw5z0FgPZo4G8V019Ucxz2NCOTxVXK8xcobhr6K"
+const char* ssid     = "ssid";
+const char* password = "password";
+
+#define DATABASE_URL "default-rtdb.firebaseio.com/"
+#define DATABASE_SECRET "secret"
 
 const uint8_t POMPA1_PIN = 23;
 const uint8_t POMPA2_PIN = 32;
