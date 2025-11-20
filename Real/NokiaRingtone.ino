@@ -1,4 +1,3 @@
-// === LIBRARY ===
 #include <WiFi.h>
 #include <Wire.h>
 #include <Adafruit_VL53L0X.h>
@@ -19,14 +18,14 @@ const uint8_t POMPA4_PIN = 26;
 const uint8_t MOTOR_PIN  = 27;
 const uint8_t SYSTEM_PIN = 14;
 
-const uint8_t BUZZER_PIN  = 13;   // NOKIA
-const uint8_t BUZZER2_PIN = 12;   // BIP 1 DETIK
+const uint8_t BUZZER_PIN  = 13;   
+const uint8_t BUZZER2_PIN = 12;   
 
-// HC-SR04 utama
+
 const uint8_t TRIG_PIN = 18;
 const uint8_t ECHO_PIN = 19;
 
-// HC-SR04 tangki
+
 const uint8_t TRIG2_PIN = 17;
 const uint8_t ECHO2_PIN = 5;
 
@@ -56,9 +55,6 @@ FirebaseData fbdo;
 FirebaseAuth auth;
 FirebaseConfig config;
 
-// ===========================
-//    RINGTONE NOKIA (PIN 13)
-// ===========================
 const int nokia_melody[] = {
   NOTE_E5, NOTE_D5, NOTE_FS4, NOTE_GS4,
   NOTE_CS5, NOTE_B4, NOTE_D4, NOTE_E4,
@@ -79,9 +75,6 @@ bool nokiaActive = false;
 unsigned long nokiaLastChange = 0;
 int nokiaIndex = 0;
 
-// ============================
-// PLAY NOKIA BUZZER PIN 13
-// ============================
 void playNokia() {
   if (!nokiaActive) return;
 
@@ -100,9 +93,6 @@ void playNokia() {
 }
 
 
-// ===================================================================
-//                      SENSOR FUNCTIONS
-// ===================================================================
 int readOptoButton(uint8_t pin) {
   return (digitalRead(pin) == LOW) ? 1 : 0;
 }
@@ -127,18 +117,12 @@ void readSensors() {
 }
 
 
-// ===================================================================
-//                     BUZZER CONTROLLER
-// ===================================================================
 void updateBuzzer() {
 
   bool tofEmpty = (tof_mm == 65535) || (tof_mm > TOF_EMPTY_MM);
   bool usEmpty  = (us_cm  == 65535) || (us_cm  > ULTRASONIC_THRESHOLD_CM);
   bool sensorsEmpty = tofEmpty && usEmpty;
 
-  // =======================
-  // BUZZER 12 → BIP 1 DETIK
-  // =======================
   if (sensorsEmpty) {
     unsigned long t = millis() % 1000; // periode 1 detik
 
@@ -151,9 +135,6 @@ void updateBuzzer() {
     digitalWrite(BUZZER2_PIN, LOW);
   }
 
-  // =======================
-  // BUZZER 13 → NOKIA TONE
-  // =======================
   if (digitalRead(SYSTEM_PIN) == HIGH) {
 
     if (!nokiaActive) {
@@ -172,7 +153,6 @@ void updateBuzzer() {
 }
 
 
-// ===================================================================
 void sendToFirebase() {
   if (WiFi.status() != WL_CONNECTED) return;
 
@@ -202,7 +182,6 @@ void sendToFirebase() {
 }
 
 
-// ===================================================================
 void setup() {
   Serial.begin(115200);
 
@@ -238,7 +217,6 @@ void setup() {
 }
 
 
-// ===================================================================
 void loop() {
   readSensors();
   updateBuzzer();
